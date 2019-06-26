@@ -4,7 +4,7 @@ resource "aws_acm_certificate" "crt" {
   count = local.acm_enabled ? 1 : 0
 
   domain_name               = var.crt_hostnames[0]
-  subject_alternative_names = slice(var.crt_hostnames, 1, 1)
+  subject_alternative_names = [ for h in var.crt_hostnames: h if h != var.crt_hostnames[0] ]
   validation_method         = "DNS"
 
   lifecycle {
@@ -24,7 +24,7 @@ resource "aws_route53_record" "crt-validation" {
     aws_acm_certificate.crt.0.domain_validation_options.0.resource_record_value
   ]
 
-  zone_id = var.zone_id
+  zone_id = data.aws_route53_zone.z.0.zone_id
   ttl     = 60
 }
 
