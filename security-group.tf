@@ -1,7 +1,7 @@
 # vim:ts=2:sw=2:et:
 
 resource "aws_security_group" "lb" {
-  count = length(var.security_groups) > 0 ? 0 : 1
+  count = var.create_security_group ? 1 : 0
 
   name        = "${var.lb_name}-sg"
   description = "${var.lb_name}-sg"

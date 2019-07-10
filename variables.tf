@@ -24,6 +24,11 @@ variable "lb_subnets" {
   default     = []
 }
 
+variable "create_security_group" {
+  type    = bool
+  default = true
+}
+
 variable "security_groups" {
   type    = list(string)
   default = []
