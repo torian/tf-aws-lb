@@ -24,7 +24,7 @@ resource "aws_route53_record" "crt-validation" {
     aws_acm_certificate.crt.0.domain_validation_options.0.resource_record_value
   ]
 
-  zone_id = data.aws_route53_zone.z.0.zone_id
+  zone_id = var.zone_id 
   ttl     = 60
 }
 
