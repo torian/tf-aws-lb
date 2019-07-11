@@ -5,7 +5,7 @@ resource "aws_lb" "lb" {
   internal           = var.lb_internal
   load_balancer_type = var.lb_type
   subnets            = var.lb_subnets
-  security_groups    = local.security_groups
+  security_groups    = if var_lb_type != "network" ? local.security_groups : null
   idle_timeout       = var.lb_idle_timeout
   
   enable_deletion_protection       = var.lb_enable_deletion_protection
