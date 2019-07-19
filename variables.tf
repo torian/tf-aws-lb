@@ -122,6 +122,11 @@ variable "acm_enabled" {
   default = false
 }
 
+variable "certificate_arn" {
+  type    = string
+  default = "" 
+}
+
 variable "dns_enabled" {
   type    = bool
   default = true
