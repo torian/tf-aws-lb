@@ -35,3 +35,7 @@ resource "aws_acm_certificate_validation" "crt-validation" {
   validation_record_fqdns = [ aws_route53_record.crt-validation.0.fqdn ]
 }
 
+output "certificate-arn" {
+  value = local.certificate_arn
+}
+
