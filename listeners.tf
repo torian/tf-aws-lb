@@ -9,7 +9,7 @@ resource "aws_lb_listener" "listeners" {
   protocol        = var.listeners[count.index]["protocol"]
   ssl_policy      = var.listeners[count.index]["ssl_policy"]
 
-  certificate_arn = var.listeners[count.index]["protocol"] == "HTTPS" ? local.certificate_arn : null
+  certificate_arn = var.listeners[count.index]["protocol"] == "HTTPS" ? var.certificate_arn : null
 
   default_action {
     type             = "forward"

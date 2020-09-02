@@ -117,11 +117,6 @@ variable "listeners" {
   default = []
 }
 
-variable "acm_enabled" {
-  type    = bool
-  default = false
-}
-
 variable "certificate_arn" {
   type    = string
   default = "" 
